@@ -13,7 +13,6 @@
     }
   },
   "type": "module",
-  "private": true,
   "files": [
     "dist",
     "README.md",
