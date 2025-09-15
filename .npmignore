@@ -1,0 +1,44 @@
+# Source files (compiled versions are in dist/)
+src/
+index.ts
+types.d.ts
+tsconfig*.json
+
+# Development files
+test/
+tests/
+examples/
+.vscode/
+.idea/
+
+# Build artifacts and temp files
+node_modules/
+*.log
+*.tmp
+*.temp
+coverage/
+.nyc_output/
+
+# Git files
+.git/
+.gitignore
+
+# Development dependencies and configs
+.eslintrc*
+.prettierrc*
+jest.config*
+vitest.config*
+bun.lockb
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Misc
+.env*
+.npmrc
