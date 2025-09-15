@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2024-01-20
 
 ### Added
+
 - Initial release of `is-kris` package
 - `isKris()` function to detect Chris/Kris variations in strings
 - `isExactlyKris()` function for exact name matching
@@ -31,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Proper error handling for invalid inputs
 
 ### Features
+
 - ✅ Detects various spellings of Chris/Kris and their longer forms
 - ✅ Case-insensitive matching
 - ✅ Word boundary detection (won't match "Christmas" or "Christian")
@@ -41,3 +43,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ Comprehensive test coverage
 
 [1.0.0]: https://github.com/yourusername/is-kris/releases/tag/v1.0.0
+
+## [2.0.0] - 2025-09-15
+
+### Changed
+
+- Breaking: `isKris()` and `isExactlyKris()` now return string literals instead of booleans.
+  - Previously: `true`/`false`
+  - Now: `"is"`/`"isn't"`
+
+### Migration
+
+- Replace boolean checks accordingly, e.g.:
+  - `if (isKris(input))` -> `if (isKris(input) === "is")`
+  - `!isKris(input)` -> `isKris(input) === "isn't"`
+
+### Notes
+
+- No changes to `findKris`, `countKris`, or `REGEX`.

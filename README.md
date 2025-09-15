@@ -27,12 +27,12 @@ npm install is-kris
 import { isKris, isExactlyKris, findKris, countKris, REGEX } from "is-kris";
 
 // Check if string contains any Chris/Kris variation
-isKris("Hello Chris"); // true
-isKris("John"); // false
+isKris("Hello Chris"); // "is"
+isKris("John"); // "isn't"
 
 // Check if string is exactly a Chris/Kris variation
-isExactlyKris("Chris"); // true
-isExactlyKris("Hello Chris"); // false
+isExactlyKris("Chris"); // "is"
+isExactlyKris("Hello Chris"); // "isn't"
 
 // Find all variations in a string
 findKris("Chris and Kris are friends"); // ['Chris', 'Kris']
@@ -46,19 +46,19 @@ console.log(REGEX); // /\b(?:c|ch|k|kh)ri(?:s|ss|st(?:o(?:ph(?:er)?|fer|ffer)))\
 // You can also use Chris aliases
 import { isChris, findChris, countChris, isExactlyChris } from "is-kris";
 
-isChris("Hello Christopher"); // true
+isChris("Hello Christopher"); // "is"
 findChris("Chris and Kris"); // ['Chris', 'Kris']
 ```
 
 ## API Reference
 
-### `isKris(input: string): boolean`
+### `isKris(input: string): "is" | "isn't"`
 
-Checks if a string contains any variation of Chris/Kris.
+Checks if a string contains any variation of Chris/Kris and returns a human-readable string.
 
-### `isExactlyKris(input: string): boolean`
+### `isExactlyKris(input: string): "is" | "isn't"`
 
-Checks if a string is exactly a variation of Chris/Kris.
+Checks if a string is exactly a variation of Chris/Kris and returns a human-readable string.
 
 ### `findKris(input: string): string[]`
 
@@ -77,9 +77,9 @@ The underlying regular expression pattern.
 All functions handle invalid inputs gracefully:
 
 ```typescript
-isKris(null); // false
-findKris(undefined); // []
-countKris(123); // 0
+isKris(null as any); // "isn't"
+findKris(undefined as any); // []
+countKris(123 as any); // 0
 ```
 
 ## Performance & Compatibility

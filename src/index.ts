@@ -4,24 +4,24 @@ import { EXACT_REGEX, REGEX } from "./constant";
  * Checks if a given string contains any variation of the name Chris/Kris.
  *
  * @param input - The string to check
- * @returns true if the input contains any variation of Chris/Kris, false otherwise
+ * @returns "is" if the input contains any variation of Chris/Kris, "isn't" otherwise
  *
  * @example
  * ```typescript
- * isKris('Chris'); // true
- * isKris('Kris'); // true
- * isKris('Christopher'); // true
- * isKris('My name is Chris'); // true
- * isKris('John'); // false
- * isKris(''); // false
+ * isKris('Chris'); // "is"
+ * isKris('Kris'); // "is"
+ * isKris('Christopher'); // "is"
+ * isKris('My name is Chris'); // "is"
+ * isKris('John'); // "isn't"
+ * isKris(''); // "isn't"
  * ```
  */
-export function isKris(input: string): boolean {
+export function isKris(input: string): "is" | "isn't" {
   if (typeof input !== "string") {
-    return false;
+    return "isn't";
   }
 
-  return REGEX.test(input);
+  return REGEX.test(input) ? "is" : "isn't";
 }
 
 /**
@@ -29,22 +29,22 @@ export function isKris(input: string): boolean {
  * Unlike isKris(), this requires the entire string to be the name (case-insensitive).
  *
  * @param input - The string to check
- * @returns true if the input is exactly a variation of Chris/Kris, false otherwise
+ * @returns "is" if the input is exactly a variation of Chris/Kris, "isn't" otherwise
  *
  * @example
  * ```typescript
- * isExactlyKris('Chris'); // true
- * isExactlyKris('christopher'); // true
- * isExactlyKris('My name is Chris'); // false
- * isExactlyKris('John'); // false
+ * isExactlyKris('Chris'); // "is"
+ * isExactlyKris('christopher'); // "is"
+ * isExactlyKris('My name is Chris'); // "isn't"
+ * isExactlyKris('John'); // "isn't"
  * ```
  */
-export function isExactlyKris(input: string): boolean {
+export function isExactlyKris(input: string): "is" | "isn't" {
   if (typeof input !== "string") {
-    return false;
+    return "isn't";
   }
 
-  return EXACT_REGEX.test(input);
+  return EXACT_REGEX.test(input) ? "is" : "isn't";
 }
 
 /**

@@ -2,107 +2,107 @@ import { test, expect, describe } from "bun:test";
 import { isKris, isExactlyKris, findKris, countKris, REGEX } from "../index";
 
 describe("isKris", () => {
-  test("should return true for basic Chris variations", () => {
-    expect(isKris("Chris")).toBe(true);
-    expect(isKris("Chriss")).toBe(true);
-    expect(isKris("chris")).toBe(true);
-    expect(isKris("CHRIS")).toBe(true);
+  test("should return 'is' for basic Chris variations", () => {
+    expect(isKris("Chris")).toBe("is");
+    expect(isKris("Chriss")).toBe("is");
+    expect(isKris("chris")).toBe("is");
+    expect(isKris("CHRIS")).toBe("is");
   });
 
-  test("should return true for basic Kris variations", () => {
-    expect(isKris("Kris")).toBe(true);
-    expect(isKris("Kriss")).toBe(true);
-    expect(isKris("Khris")).toBe(true);
-    expect(isKris("kris")).toBe(true);
-    expect(isKris("KRIS")).toBe(true);
+  test("should return 'is' for basic Kris variations", () => {
+    expect(isKris("Kris")).toBe("is");
+    expect(isKris("Kriss")).toBe("is");
+    expect(isKris("Khris")).toBe("is");
+    expect(isKris("kris")).toBe("is");
+    expect(isKris("KRIS")).toBe("is");
   });
 
-  test("should return true for Christopher variations", () => {
-    expect(isKris("Christopher")).toBe(true);
-    expect(isKris("Christoph")).toBe(true);
-    expect(isKris("christopher")).toBe(true);
-    expect(isKris("CHRISTOPHER")).toBe(true);
+  test("should return 'is' for Christopher variations", () => {
+    expect(isKris("Christopher")).toBe("is");
+    expect(isKris("Christoph")).toBe("is");
+    expect(isKris("christopher")).toBe("is");
+    expect(isKris("CHRISTOPHER")).toBe("is");
   });
 
-  test("should return true for Kristopher variations", () => {
-    expect(isKris("Kristopher")).toBe(true);
-    expect(isKris("Kristoph")).toBe(true);
-    expect(isKris("kristopher")).toBe(true);
-    expect(isKris("KRISTOPHER")).toBe(true);
+  test("should return 'is' for Kristopher variations", () => {
+    expect(isKris("Kristopher")).toBe("is");
+    expect(isKris("Kristoph")).toBe("is");
+    expect(isKris("kristopher")).toBe("is");
+    expect(isKris("KRISTOPHER")).toBe("is");
   });
 
-  test("should return true for other valid variations", () => {
-    expect(isKris("Christofer")).toBe(true);
-    expect(isKris("Cristofer")).toBe(true);
-    expect(isKris("Christoffer")).toBe(true);
-    expect(isKris("Kristoffer")).toBe(true);
+  test("should return 'is' for other valid variations", () => {
+    expect(isKris("Christofer")).toBe("is");
+    expect(isKris("Cristofer")).toBe("is");
+    expect(isKris("Christoffer")).toBe("is");
+    expect(isKris("Kristoffer")).toBe("is");
   });
 
-  test("should return true when name appears in longer strings", () => {
-    expect(isKris("Hello Chris")).toBe(true);
-    expect(isKris("My name is Christopher")).toBe(true);
-    expect(isKris("Chris is here")).toBe(true);
-    expect(isKris("I know Kris")).toBe(true);
+  test("should return 'is' when name appears in longer strings", () => {
+    expect(isKris("Hello Chris")).toBe("is");
+    expect(isKris("My name is Christopher")).toBe("is");
+    expect(isKris("Chris is here")).toBe("is");
+    expect(isKris("I know Kris")).toBe("is");
   });
 
-  test("should return false for invalid names", () => {
-    expect(isKris("John")).toBe(false);
-    expect(isKris("Mike")).toBe(false);
-    expect(isKris("Christian")).toBe(false);
-    expect(isKris("Christina")).toBe(false);
-    expect(isKris("Christmas")).toBe(false);
+  test("should return 'isn't' for invalid names", () => {
+    expect(isKris("John")).toBe("isn't");
+    expect(isKris("Mike")).toBe("isn't");
+    expect(isKris("Christian")).toBe("isn't");
+    expect(isKris("Christina")).toBe("isn't");
+    expect(isKris("Christmas")).toBe("isn't");
   });
 
-  test("should return false for edge cases", () => {
-    expect(isKris("")).toBe(false);
-    expect(isKris(" ")).toBe(false);
-    expect(isKris("K")).toBe(false);
-    expect(isKris("Kr")).toBe(false);
-    expect(isKris("Kri")).toBe(false);
+  test("should return 'isn't' for edge cases", () => {
+    expect(isKris("")).toBe("isn't");
+    expect(isKris(" ")).toBe("isn't");
+    expect(isKris("K")).toBe("isn't");
+    expect(isKris("Kr")).toBe("isn't");
+    expect(isKris("Kri")).toBe("isn't");
   });
 
   test("should handle non-string inputs", () => {
-    expect(isKris(null as any)).toBe(false);
-    expect(isKris(undefined as any)).toBe(false);
-    expect(isKris(123 as any)).toBe(false);
-    expect(isKris({} as any)).toBe(false);
-    expect(isKris([] as any)).toBe(false);
+    expect(isKris(null as any)).toBe("isn't");
+    expect(isKris(undefined as any)).toBe("isn't");
+    expect(isKris(123 as any)).toBe("isn't");
+    expect(isKris({} as any)).toBe("isn't");
+    expect(isKris([] as any)).toBe("isn't");
   });
 });
 
 describe("isExactlyKris", () => {
-  test("should return true for exact matches", () => {
-    expect(isExactlyKris("Chris")).toBe(true);
-    expect(isExactlyKris("Kris")).toBe(true);
-    expect(isExactlyKris("Christopher")).toBe(true);
-    expect(isExactlyKris("Kristopher")).toBe(true);
-    expect(isExactlyKris("chris")).toBe(true);
-    expect(isExactlyKris("KRIS")).toBe(true);
+  test("should return 'is' for exact matches", () => {
+    expect(isExactlyKris("Chris")).toBe("is");
+    expect(isExactlyKris("Kris")).toBe("is");
+    expect(isExactlyKris("Christopher")).toBe("is");
+    expect(isExactlyKris("Kristopher")).toBe("is");
+    expect(isExactlyKris("chris")).toBe("is");
+    expect(isExactlyKris("KRIS")).toBe("is");
   });
 
-  test("should return false for partial matches", () => {
-    expect(isExactlyKris("Hello Chris")).toBe(false);
-    expect(isExactlyKris("Chris is here")).toBe(false);
-    expect(isExactlyKris("My name is Christopher")).toBe(false);
-    expect(isExactlyKris("I know Kris")).toBe(false);
+  test("should return 'isn't' for partial matches", () => {
+    expect(isExactlyKris("Hello Chris")).toBe("isn't");
+    expect(isExactlyKris("Chris is here")).toBe("isn't");
+    expect(isExactlyKris("My name is Christopher")).toBe("isn't");
+    expect(isExactlyKris("I know Kris")).toBe("isn't");
   });
 
-  test("should return false for non-Chris names", () => {
-    expect(isExactlyKris("John")).toBe(false);
-    expect(isExactlyKris("Christian")).toBe(false);
-    expect(isExactlyKris("Christmas")).toBe(false);
+  test("should return 'isn't' for non-Chris names", () => {
+    expect(isExactlyKris("John")).toBe("isn't");
+    expect(isExactlyKris("Christian")).toBe("isn't");
+    expect(isExactlyKris("Christmas")).toBe("isn't");
   });
 
   test("should handle edge cases", () => {
-    expect(isExactlyKris("")).toBe(false);
-    expect(isExactlyKris(" Chris ")).toBe(false);
-    expect(isExactlyKris("Chris\n")).toBe(false);
+    expect(isExactlyKris("")).toBe("isn't");
+    expect(isExactlyKris(" Chris ")).toBe("isn't");
+    expect(isExactlyKris("Chris\n")).toBe("isn't");
   });
 
   test("should handle non-string inputs", () => {
-    expect(isExactlyKris(null as any)).toBe(false);
-    expect(isExactlyKris(undefined as any)).toBe(false);
-    expect(isExactlyKris(123 as any)).toBe(false);
+    expect(isExactlyKris(null as any)).toBe("isn't");
+    expect(isExactlyKris(undefined as any)).toBe("isn't");
+    expect(isExactlyKris(123 as any)).toBe("isn't");
   });
 });
 
@@ -264,29 +264,29 @@ describe("Performance tests", () => {
 
 describe("Edge cases and special characters", () => {
   test("should handle strings with numbers", () => {
-    expect(isKris("Chris 123")).toBe(true); // Space creates word boundary
-    expect(isKris("123 Chris")).toBe(true); // Space creates word boundary
-    expect(isKris("Chris123")).toBe(false); // No word boundary between s and 1
-    expect(isKris("123Chris")).toBe(false); // No word boundary between 3 and C
-    expect(isKris("Chr1s")).toBe(false);
+    expect(isKris("Chris 123")).toBe("is"); // Space creates word boundary
+    expect(isKris("123 Chris")).toBe("is"); // Space creates word boundary
+    expect(isKris("Chris123")).toBe("isn't"); // No word boundary between s and 1
+    expect(isKris("123Chris")).toBe("isn't"); // No word boundary between 3 and C
+    expect(isKris("Chr1s")).toBe("isn't");
   });
 
   test("should handle strings with special characters", () => {
-    expect(isKris("Chris!")).toBe(true);
-    expect(isKris("@Chris")).toBe(true);
-    expect(isKris("Chris-Smith")).toBe(true);
-    expect(isKris("Chris.Johnson")).toBe(true);
+    expect(isKris("Chris!")).toBe("is");
+    expect(isKris("@Chris")).toBe("is");
+    expect(isKris("Chris-Smith")).toBe("is");
+    expect(isKris("Chris.Johnson")).toBe("is");
   });
 
   test("should handle unicode characters", () => {
-    expect(isKris("Hello Chris 👋")).toBe(true);
-    expect(isKris("Chris 🎉")).toBe(true);
+    expect(isKris("Hello Chris 👋")).toBe("is");
+    expect(isKris("Chris 🎉")).toBe("is");
   });
 
   test("should respect word boundaries", () => {
-    expect(isKris("Christen")).toBe(false);
-    expect(isKris("Kristin")).toBe(false);
-    expect(isKris("Christmas")).toBe(false);
-    expect(isKris("Kristen")).toBe(false);
+    expect(isKris("Christen")).toBe("isn't");
+    expect(isKris("Kristin")).toBe("isn't");
+    expect(isKris("Christmas")).toBe("isn't");
+    expect(isKris("Kristen")).toBe("isn't");
   });
 });
